@@ -11,8 +11,8 @@ var private = {
 };
 
 var Matrix = function (config) {
-  private.width = args.width;
-  private.height = args.height;
+  private.width = config.width;
+  private.height = config.height;
 
   /**
    * TODO
@@ -24,7 +24,7 @@ var Matrix = function (config) {
   for (var y = 0; y < private.height; y++) (function () {
     var row = [];
     for (var x = 0; x < private.width; x++) {
-      row.push(extend(args.cell));
+      row.push(extend(config.cell));
     }
     m.push(row);
   })();
