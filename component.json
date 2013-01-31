@@ -2,16 +2,12 @@
   "name": "matrix",
   "repo": "pfraces/matrix",
   "description": "2d arrays",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "dependencies": {
-    "pfraces/extend": "*"
+    "pfraces/extend": "*",
+    "pfraces/job": "*"
   },
   "scripts": ["index.js"],
-  "keywords": [
-    "array",
-    "vector",
-    "matrix",
-    "2d"
-  ],
+  "keywords": ["array", "2d"],
   "license": "MIT"
 }
