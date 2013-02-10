@@ -1,11 +1,11 @@
 {
   "name": "matrix",
-  "repo": "pfraces/matrix",
+  "repo": "corejs/matrix",
   "description": "2d arrays",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "dependencies": {
-    "pfraces/extend": "*",
-    "pfraces/job": "*"
+    "corejs/extend": "*",
+    "corejs/job": "*"
   },
   "scripts": ["index.js"],
   "keywords": ["array", "2d"],
