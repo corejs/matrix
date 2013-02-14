@@ -6,42 +6,40 @@ var matrix = module.exports = function (config) {
   return new Matrix(config);
 };
 
-var private = {};
-
 var Matrix = function (config) {
-  private.self = this;
-  private.width = config.width;
-  private.height = config.height;
+  var width = config.width,
+      height = config.height
+      cell = config.cell;
 
-  var m = [];
-  for (var y = 0; y < private.height; y++) (function () {
+  this.matrix = [];
+
+  for (var y = 0; y < height; y++) (function () {
     var row = [];
-    for (var x = 0; x < private.width; x++) {
-      row.push(extend(config.cell));
+    for (var x = 0; x < width; x++) {
+      row.push(extend(cell));
     }
-    m.push(row);
+    this.matrix.push(row);
   })();
-  private.matrix = m;
 };
 
 Matrix.prototype.raw = function () {
-  return JSON.parse(JSON.stringify(private.matrix));
+  return JSON.parse(JSON.stringify(this.matrix));
 };
 
 Matrix.prototype.at = function (args) {
-  return private.matrix[args.y][args.x];
+  return this.matrix[args.y][args.x];
 };
 
 Matrix.prototype.cut = function (area) {
   var m = [];
   for (var y = area.begin.y; y < area.end.y; y++) {
-    m.push(private.matrix.slice(area.begin.x, area.end.x));
+    m.push(this.matrix.slice(area.begin.x, area.end.x));
   }
   return matrix(m);
 }
 
 Matrix.prototype.forEach = function (handler) {
-  private.matrix.forEach(function (row, y) {
+  this.matrix.forEach(function (row, y) {
     row.forEach(function (cell, x) {
       handler(cell, { x: x, y: y });
     });
@@ -49,8 +47,9 @@ Matrix.prototype.forEach = function (handler) {
 };
 
 Matrix.prototype.some = function (handler) {
+  var self = this;
   return job(function () {
-    private.self.forEach(function () {
+    self.forEach(function () {
       if (handler.apply(null, arguments) === true) {
         done(true);
       }
