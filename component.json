@@ -2,7 +2,7 @@
   "name": "matrix",
   "repo": "corejs/matrix",
   "description": "2d arrays",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "dependencies": {
     "corejs/job": "*"
   },

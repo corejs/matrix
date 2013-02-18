@@ -63,7 +63,7 @@ Matrix.prototype.some = function (handler) {
   });
 };
 
-var outOfBounds(size, pos) {
+var outOfBounds = function (size, pos) {
   return  pos.x > 0           &&
           pos.y > 0           &&
           pos.x < size.width  &&
