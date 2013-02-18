@@ -24,9 +24,9 @@ Matrix.prototype.raw = function () {
   return JSON.parse(JSON.stringify(this.matrix));
 };
 
-Matrix.prototype.at = function (args) {
-  if (args.val) {
-    this.matrix[args.y][args.x] = args.val;
+Matrix.prototype.at = function (pos, val) {
+  if (val) {
+    this.matrix[pos.y][pos.x] = val;
   }
 
   return this.matrix[args.y][args.x];
