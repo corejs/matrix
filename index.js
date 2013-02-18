@@ -7,6 +7,9 @@ var matrix = module.exports = function (config) {
 
 var Matrix = function (config) {
   this.matrix = [];
+  this.outHandler = config.out || function () {
+    return -1;
+  };
 
   var width = config.width,
       height = config.height
@@ -27,7 +30,7 @@ Matrix.prototype.raw = function () {
 
 Matrix.prototype.at = function (pos, val) {
   if (outOfBounds({ width: this.width, height: this.height }, pos)) {
-    return;
+    return outHandler();
   }
   if (val) {
     this.matrix[pos.y][pos.x] = val;
