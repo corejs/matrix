@@ -30,7 +30,7 @@ Matrix.prototype.raw = function () {
 
 Matrix.prototype.at = function (pos, val) {
   if (outOfBounds({ width: this.width, height: this.height }, pos)) {
-    return outHandler();
+    return this.outHandler();
   }
   if (val) {
     this.matrix[pos.y][pos.x] = val;
