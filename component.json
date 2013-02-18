@@ -2,8 +2,9 @@
   "name": "matrix",
   "repo": "corejs/matrix",
   "description": "2d arrays",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "dependencies": {
+    "corejs/type": "*",
     "corejs/job": "*"
   },
   "scripts": ["index.js"],

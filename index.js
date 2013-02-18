@@ -1,32 +1,43 @@
-var job = require("job"),
-    done = job.done;
+var type = require('type'),
+    job = require("job");
+
+var done = job.done;
 
 var matrix = module.exports = function (config) {
   return new Matrix(config);
 };
 
 var Matrix = function (config) {
-  this.matrix = [];
-  this.size = {
-    width: config.width,
-    height: config.height
-  };
+  var matrix = this;
 
-  var width = config.width,
-      height = config.height
-      matrix = this.matrix;
+  type(config).handle({
+    'arr': function () {
+      matrix.matrix = config;
+      matrix.size = {
+        width: config[0].length,
+        height: config.length
+      };
+    },
+    'default': function () {
+      matrix.matrix = [];
+      matrix.size = {
+        width: config.width,
+        height: config.height
+      };
 
-  for (var y = 0; y < height; y++) (function () {
-    var row = [];
-    for (var x = 0; x < width; x++) {
-      row.push(null);
+      for (var y = 0; y < config.height; y++) (function () {
+        var row = [];
+        for (var x = 0; x < config.width; x++) {
+          row.push(null);
+        }
+        matrix.matrix.push(row);
+      })();
     }
-    matrix.push(row);
-  })();
+  });
 };
 
 Matrix.prototype.raw = function () {
-  return JSON.parse(JSON.stringify(this.matrix));
+  return cloneMatrix(this.matrix);
 };
 
 Matrix.prototype.at = function (pos, val) {
@@ -72,4 +83,8 @@ var outOfBounds = function (size, pos) {
            pos.y >= 0 && 
            pos.x < size.width && 
            pos.y < size.height);
+};
+
+var cloneMatrix = function (m) {
+  return JSON.parse(JSON.stringify(m));
 };
