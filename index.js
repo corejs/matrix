@@ -64,8 +64,8 @@ Matrix.prototype.some = function (handler) {
 };
 
 var outOfBounds = function (size, pos) {
-  return !(pos.x > 0 &&
-           pos.y > 0 && 
+  return !(pos.x >= 0 &&
+           pos.y >= 0 && 
            pos.x < size.width && 
            pos.y < size.height);
 };
