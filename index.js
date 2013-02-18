@@ -1,5 +1,4 @@
-var extend = require("extend"),
-    job = require("job"),
+var job = require("job"),
     done = job.done;
 
 var matrix = module.exports = function (config) {
@@ -8,15 +7,14 @@ var matrix = module.exports = function (config) {
 
 var Matrix = function (config) {
   var width = config.width,
-      height = config.height
-      cell = config.cell;
+      height = config.height;
 
   this.matrix = [];
 
   for (var y = 0; y < height; y++) (function () {
     var row = [];
     for (var x = 0; x < width; x++) {
-      row.push(extend(cell));
+      row.push({});
     }
     this.matrix.push(row);
   })();
