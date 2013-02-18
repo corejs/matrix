@@ -30,7 +30,7 @@ Matrix.prototype.at = function (pos, val) {
     this.matrix[pos.y][pos.x] = val;
   }
 
-  return this.matrix[args.y][args.x];
+  return this.matrix[pos.y][pos.x];
 };
 
 Matrix.prototype.cut = function (area) {
