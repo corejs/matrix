@@ -6,17 +6,18 @@ var matrix = module.exports = function (config) {
 };
 
 var Matrix = function (config) {
-  var width = config.width,
-      height = config.height;
-
   this.matrix = [];
+
+  var width = config.width,
+      height = config.height
+      matrix = this.matrix;
 
   for (var y = 0; y < height; y++) (function () {
     var row = [];
     for (var x = 0; x < width; x++) {
       row.push();
     }
-    this.matrix.push(row);
+    matrix.push(row);
   })();
 };
 
