@@ -25,6 +25,10 @@ Matrix.prototype.raw = function () {
 };
 
 Matrix.prototype.at = function (args) {
+  if (args.val) {
+    this.matrix[args.y][args.x] = args.val;
+  }
+
   return this.matrix[args.y][args.x];
 };
 
