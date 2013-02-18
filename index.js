@@ -1,4 +1,4 @@
-var type = require('type'),
+var type = require('type');
 
 var matrix = module.exports = function (config) {
   return new Matrix(config);
