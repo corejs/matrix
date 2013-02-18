@@ -12,7 +12,7 @@ var Matrix = function (config) {
 
   type(config).handle({
     'arr': function () {
-      matrix.matrix = config;
+      matrix.matrix = cloneMatrix(config);
       matrix.size = {
         width: config[0].length,
         height: config.length
