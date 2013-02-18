@@ -26,10 +26,12 @@ Matrix.prototype.raw = function () {
 };
 
 Matrix.prototype.at = function (pos, val) {
+  if (outOfBounds({ width: this.width, height: this.height }, pos)) {
+    return;
+  }
   if (val) {
     this.matrix[pos.y][pos.x] = val;
   }
-
   return this.matrix[pos.y][pos.x];
 };
 
@@ -59,4 +61,11 @@ Matrix.prototype.some = function (handler) {
     });
     return false;
   });
+};
+
+var outOfBounds(size, pos) {
+  return  pos.x > 0           &&
+          pos.y > 0           &&
+          pos.x < size.width  &&
+          pos.y < size.height;
 };
