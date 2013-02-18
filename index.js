@@ -58,7 +58,7 @@ Matrix.prototype.cut = function (area) {
   return matrix(m);
 }
 
-Matrix.prototype.forEach = function (handler) {
+Matrix.prototype.each = function (handler) {
   this.matrix.forEach(function (row, y) {
     row.forEach(function (cell, x) {
       handler(cell, { x: x, y: y });
@@ -67,9 +67,9 @@ Matrix.prototype.forEach = function (handler) {
 };
 
 Matrix.prototype.some = function (handler) {
-  var self = this;
+  var matrix = this;
   return job(function () {
-    self.forEach(function () {
+    matrix.each(function () {
       if (handler.apply(null, arguments) === true) {
         done(true);
       }
