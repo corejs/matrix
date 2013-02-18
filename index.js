@@ -14,7 +14,7 @@ var Matrix = function (config) {
   for (var y = 0; y < height; y++) (function () {
     var row = [];
     for (var x = 0; x < width; x++) {
-      row.push({});
+      row.push();
     }
     this.matrix.push(row);
   })();
